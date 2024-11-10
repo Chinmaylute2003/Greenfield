@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@using POCO;
+<main>
+    <div class="d-flex flex-row gap-3">
+        @{
+            
+
+            foreach (Product p in @Model)
+            {
+                <div class="bg-danger text-white border border-2 border-dark p-3 rounded w-25">
+                    <p class="text-dark">@p.Id</p>
+                    <p class="text-dark">@p.Title</p>
+                    <p class="text-dark">@p.Description</p>
+                </div>
+            }
+        }
+    </div>
+</main>
+

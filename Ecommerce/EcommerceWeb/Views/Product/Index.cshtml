@@ -1,0 +1,15 @@
+﻿@using Catalog;
+@{
+    ViewBag.Title = "Index";
+}
+<div class="d-flex flex-column p-3">
+
+    @{ 
+        foreach(Product p in @Model)
+        {
+           <p class="text-danger p-3">@p.Title</p>
+        }
+    }
+</div>
+
+
