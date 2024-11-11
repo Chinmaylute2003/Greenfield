@@ -11,31 +11,31 @@ namespace BinaryDataRepositoryLib
 {
     //Workflow: Services --> Specification --> SerializationRepository
     //SERIALIZATION IS LIKE SYNCING DIFFERENT OBJECT TOGETHER TO PERFORM CERTAIN OPERATION.
-    public class BinaryRepository : IDataRepository
+    public class BinaryRepository<T>: IDataRepository<T>
     {
-        public bool Serialize(string filename, List<Product> products)
+        public bool Serialize(string filename, List<T> items)
         {
             bool status = false;
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
-            formatter.Serialize(fs, products);
+            formatter.Serialize(fs, items);
             fs.Close();
             status = true;
             return status;
 
         }
 
-        public List<Product> Deserialize(string filename)
+        public List<T> Deserialize(string filename)
         {
-            List<Product> products = new List<Product>();
+            List<T> items = null;
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream fs = new FileStream(filename, FileMode.Open);
             if (fs != null)
             {
-                products = (List<Product>)formatter.Deserialize(fs);
+                items = (List<T>)formatter.Deserialize(fs);
             }
             fs.Close();
-            return products;
+            return items;
         }
 
     }

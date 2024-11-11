@@ -12,6 +12,7 @@ namespace Services
     public class ProductService : iProductService
     {
         List<Product> productList;
+        
 
         public bool Seeding()
         {
@@ -39,7 +40,7 @@ namespace Services
 
             productList.Add(product1);
             productList.Add(product2);
-            IDataRepository svc = new BinaryRepository();
+            IDataRepository<Product> svc = new BinaryRepository<Product>();
             status = svc.Serialize("C:\\Users\\chinmay.lute\\source\\repos\\SimplifyHealthcare\\SerializationWebApp\\product.dat", productList);
             return status;
         }
@@ -53,7 +54,7 @@ namespace Services
             List<Product> products = new List<Product>();
             products = GetAll();
             products.Remove(product);
-            IDataRepository svc = new BinaryRepository();
+            IDataRepository<Product> svc = new BinaryRepository<Product>();
             status  = svc.Serialize("C:\\Users\\chinmay.lute\\source\\repos\\SimplifyHealthcare\\SerializationWebApp\\product.dat", products);
             return status;
 
@@ -63,7 +64,7 @@ namespace Services
         {
             
             List<Product> allProducts = new List<Product>();
-            IDataRepository svc = new BinaryRepository();
+            IDataRepository<Product> svc = new BinaryRepository<Product>();
             allProducts = svc.Deserialize("C:\\Users\\chinmay.lute\\source\\repos\\SimplifyHealthcare\\SerializationWebApp\\product.dat");  
             return allProducts;
         }
@@ -92,7 +93,7 @@ namespace Services
             List<Product> allProducts = new List<Product>();
             allProducts = GetAll();
             allProducts.Add(product);
-            IDataRepository svc = new BinaryRepository();
+            IDataRepository<Product> svc = new BinaryRepository<Product>();
             svc.Serialize("C:\\Users\\chinmay.lute\\source\\repos\\SimplifyHealthcare\\SerializationWebApp\\product.dat", allProducts);
             status = true;
             return status;
@@ -105,7 +106,7 @@ namespace Services
             Product productToBeDeleted = GetProduct(productToBeUpdated.Id);
             allProducts.Remove(productToBeDeleted);
             allProducts.Add(productToBeUpdated);
-            IDataRepository svc = new BinaryRepository();
+            IDataRepository<Product> svc = new BinaryRepository<Product>();
             svc.Serialize("C:\\Users\\chinmay.lute\\source\\repos\\SimplifyHealthcare\\SerializationWebApp\\product.dat", allProducts);
            
         }
