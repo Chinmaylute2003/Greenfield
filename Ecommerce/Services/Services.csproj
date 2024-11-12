@@ -49,6 +49,10 @@
       <Project>{25af5413-5752-45b1-8c4e-ccdcf4b79bfa}</Project>
       <Name>BinaryDataRepositoryLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JSONDataRepositoryLib\JSONDataRepositoryLib.csproj">
+      <Project>{4ce898a8-a25c-4bc5-9cad-fb540e93120e}</Project>
+      <Name>JSONDataRepositoryLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\POCOLib\POCOLib.csproj">
       <Project>{15456dfb-e035-405c-946b-567189b27821}</Project>
       <Name>POCOLib</Name>

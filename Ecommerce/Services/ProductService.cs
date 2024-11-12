@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using POCO;
 using Specification;
-using BinaryDataRepositoryLib;
+using JSONDataRepositoryLib;
 using System.Configuration;
 namespace Services
 {
     public class ProductService : iProductService
     {
         List<Product> productList;
-        
+        public string filePath = @"E:/product.dat";
 
         public bool Seeding()
         {
@@ -40,13 +40,14 @@ namespace Services
 
             productList.Add(product1);
             productList.Add(product2);
-            IDataRepository<Product> svc = new BinaryRepository<Product>();
-            status = svc.Serialize("C:\\Users\\chinmay.lute\\source\\repos\\SimplifyHealthcare\\SerializationWebApp\\product.dat", productList);
+            IDataRepository<Product> svc = new JSONRepository<Product>();
+            status = svc.Serialize(filePath, productList);
             return status;
         }
         public ProductService()
         {
             productList = new List<Product>();
+            Seeding();
         }
         public bool Delete(Product product)
         {
@@ -54,8 +55,8 @@ namespace Services
             List<Product> products = new List<Product>();
             products = GetAll();
             products.Remove(product);
-            IDataRepository<Product> svc = new BinaryRepository<Product>();
-            status  = svc.Serialize("C:\\Users\\chinmay.lute\\source\\repos\\SimplifyHealthcare\\SerializationWebApp\\product.dat", products);
+            IDataRepository<Product> svc = new JSONRepository<Product>();
+            status  = svc.Serialize(filePath, products);
             return status;
 
         }
@@ -64,8 +65,8 @@ namespace Services
         {
             
             List<Product> allProducts = new List<Product>();
-            IDataRepository<Product> svc = new BinaryRepository<Product>();
-            allProducts = svc.Deserialize("C:\\Users\\chinmay.lute\\source\\repos\\SimplifyHealthcare\\SerializationWebApp\\product.dat");  
+            IDataRepository<Product> svc = new JSONRepository<Product>();
+            allProducts = svc.Deserialize(filePath);  
             return allProducts;
         }
 
@@ -93,8 +94,8 @@ namespace Services
             List<Product> allProducts = new List<Product>();
             allProducts = GetAll();
             allProducts.Add(product);
-            IDataRepository<Product> svc = new BinaryRepository<Product>();
-            svc.Serialize("C:\\Users\\chinmay.lute\\source\\repos\\SimplifyHealthcare\\SerializationWebApp\\product.dat", allProducts);
+            IDataRepository<Product> svc = new JSONRepository<Product>();
+            svc.Serialize(filePath, allProducts);
             status = true;
             return status;
         }
@@ -106,8 +107,8 @@ namespace Services
             Product productToBeDeleted = GetProduct(productToBeUpdated.Id);
             allProducts.Remove(productToBeDeleted);
             allProducts.Add(productToBeUpdated);
-            IDataRepository<Product> svc = new BinaryRepository<Product>();
-            svc.Serialize("C:\\Users\\chinmay.lute\\source\\repos\\SimplifyHealthcare\\SerializationWebApp\\product.dat", allProducts);
+            IDataRepository<Product> svc = new JSONRepository<Product>();
+            svc.Serialize(filePath, allProducts);
            
         }
     }

@@ -43,6 +43,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Membership", "Membership\Me
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MembershipTest", "MembershipTest\MembershipTest.csproj", "{EBE2BC7A-E2D5-4168-90B8-CC3968453E37}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthWebApi", "AuthWebApi\AuthWebApi.csproj", "{F5E3B913-0322-4DC3-A146-FEE2B77961D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONDataRepositoryLib", "JSONDataRepositoryLib\JSONDataRepositoryLib.csproj", "{4CE898A8-A25C-4BC5-9CAD-FB540E93120E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +133,14 @@ Global
 		{EBE2BC7A-E2D5-4168-90B8-CC3968453E37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBE2BC7A-E2D5-4168-90B8-CC3968453E37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBE2BC7A-E2D5-4168-90B8-CC3968453E37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E3B913-0322-4DC3-A146-FEE2B77961D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E3B913-0322-4DC3-A146-FEE2B77961D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E3B913-0322-4DC3-A146-FEE2B77961D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E3B913-0322-4DC3-A146-FEE2B77961D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CE898A8-A25C-4BC5-9CAD-FB540E93120E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CE898A8-A25C-4BC5-9CAD-FB540E93120E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CE898A8-A25C-4BC5-9CAD-FB540E93120E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CE898A8-A25C-4BC5-9CAD-FB540E93120E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
