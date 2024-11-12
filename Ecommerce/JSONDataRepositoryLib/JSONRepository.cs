@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Specification;
 using System.Text.Json;
+using Newtonsoft.Json;
+using System.Runtime.InteropServices;
 
 namespace JSONDataRepositoryLib
 {
@@ -14,13 +16,10 @@ namespace JSONDataRepositoryLib
     {
         public bool Serialize(string filename, List<T> items)
         {
-            bool status = false;
             
-            FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
-            JsonSerializer.Serialize<List<T>>(fs, items, new JsonSerializerOptions { WriteIndented = true });
-            fs.Close();
-            status = true;
-            return status;
+            string jsonData = JsonConvert.SerializeObject(items);
+            File.WriteAllText(filename, jsonData);
+            return true;
 
         }
 
@@ -28,12 +27,9 @@ namespace JSONDataRepositoryLib
         {
             List<T> items = null;
            
-            FileStream fs = new FileStream(filename, FileMode.Open);
-            if (fs != null)
-            {
-                items = JsonSerializer.Deserialize<List<T>>(fs);
-            }
-            fs.Close();
+            string jsonData = File.ReadAllText(filename);
+            items = JsonConvert.DeserializeObject<List<T>>(jsonData);
+       
             return items;
         }
     }
