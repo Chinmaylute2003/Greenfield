@@ -76,6 +76,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\POCOLib\EcommerceEntities.csproj">
+      <Project>{15456DFB-E035-405C-946B-567189B27821}</Project>
+      <Name>EcommerceEntities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Specification\Specification.csproj">
       <Project>{fb8a65e2-4281-4ef5-931c-128095a7d586}</Project>
       <Name>Specification</Name>

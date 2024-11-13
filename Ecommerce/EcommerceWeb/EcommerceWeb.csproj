@@ -237,9 +237,9 @@
       <Project>{3315565e-9b1a-4717-be5d-d44ced87a1be}</Project>
       <Name>CRM</Name>
     </ProjectReference>
-    <ProjectReference Include="..\POCOLib\POCOLib.csproj">
+    <ProjectReference Include="..\POCOLib\EcommerceEntities.csproj">
       <Project>{15456dfb-e035-405c-946b-567189b27821}</Project>
-      <Name>POCOLib</Name>
+      <Name>EcommerceEntities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

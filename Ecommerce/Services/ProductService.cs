@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using POCO;
+using EcommerceEntities;
 using Specification;
 using JSONDataRepositoryLib;
 using System.Configuration;
-namespace Services
+namespace EcommerceServices
 {
     public class ProductService : iProductService
     {
@@ -29,7 +29,7 @@ namespace Services
             };
             Product product2 = new Product
             {
-                Id = 1,
+                Id = 2,
                 Title = "Flower2",
                 Description = "This is flower2",
                 UnitPrice = 10,

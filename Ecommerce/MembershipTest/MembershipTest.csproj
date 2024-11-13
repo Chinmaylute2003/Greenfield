@@ -54,13 +54,13 @@
       <Project>{780c2252-f83a-4cc2-934b-f71e0adedd54}</Project>
       <Name>Membership</Name>
     </ProjectReference>
-    <ProjectReference Include="..\POCOLib\POCOLib.csproj">
+    <ProjectReference Include="..\POCOLib\EcommerceEntities.csproj">
       <Project>{15456dfb-e035-405c-946b-567189b27821}</Project>
-      <Name>POCOLib</Name>
+      <Name>EcommerceEntities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Services\Services.csproj">
+    <ProjectReference Include="..\Services\EcommerceServices.csproj">
       <Project>{ef798a8d-e891-4362-b00d-a043fd2d182d}</Project>
-      <Name>Services</Name>
+      <Name>EcommerceServices</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

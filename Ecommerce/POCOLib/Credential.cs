@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace POCOLib
+namespace EcommerceEntities
+
 {
-    internal class Credential
+    public class Credential
     {
         public string Email {  get; set; }
         public string Password { get; set; }

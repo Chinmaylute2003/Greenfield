@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using POCO;
+using EcommerceEntities;
 
 namespace Specification
 {
@@ -11,5 +11,6 @@ namespace Specification
     {
         bool Serialize(string filename, List<T> items);
         List<T> Deserialize(string filename);
+       
     }
 }

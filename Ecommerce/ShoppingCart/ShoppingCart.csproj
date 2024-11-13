@@ -51,9 +51,9 @@
       <Project>{c0d37394-11c2-4241-aa6b-1ae1924a8fc9}</Project>
       <Name>Catalog</Name>
     </ProjectReference>
-    <ProjectReference Include="..\POCOLib\POCOLib.csproj">
+    <ProjectReference Include="..\POCOLib\EcommerceEntities.csproj">
       <Project>{15456dfb-e035-405c-946b-567189b27821}</Project>
-      <Name>POCOLib</Name>
+      <Name>EcommerceEntities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

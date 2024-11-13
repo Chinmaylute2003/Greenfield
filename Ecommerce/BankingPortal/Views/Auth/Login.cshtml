@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<div >
+    <form method="POST" action="/auth/Login">
+
+        <h2 class="fw-bold">Login</h2>
+        <div class="d-flex flex-column gap-2">
+
+
+            <label class="d-block">Email</label>
+            <input type="email" name="email" placeholder="email" />
+            <label class="d-block">Password</label>
+            <input type="password" name="password" placeholder="password" />
+ 
+
+            <button class="bg-success text-white border rounded-pill px-3" style="width:fit-content" type="submit">Login</button>
+            <div class="d-flex gap-2 justify-content-between" style="width:fit-content"><a class="text-decoration-none" href="/auth/register">Register</a> <a class="text-decoration-none" href="/auth/resetpassword">Reset Password</a></div>
+        </div>
+    </form>
+</div>
+

@@ -5,7 +5,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Catalog;
-using POCO;
+using EcommerceEntities;
 
 namespace ShoppingCart
 {

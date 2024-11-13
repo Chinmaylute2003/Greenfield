@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BinaryDataRepositoryLib;
-using Services;
-using POCO;
+using EcommerceServices;
+using EcommerceEntities;
 
 namespace SerializationTestApp
 {

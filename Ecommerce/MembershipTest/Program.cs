@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Membership;
-using POCO;
+using EcommerceServices;
+using EcommerceEntities;
 namespace MembershipTest
 {
     internal class Program

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Services;
-using POCO;
+using EcommerceServices;
+using EcommerceEntities;
 
 namespace AuthWebApi.Controllers
 {

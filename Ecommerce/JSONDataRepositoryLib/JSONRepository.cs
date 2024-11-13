@@ -25,10 +25,10 @@ namespace JSONDataRepositoryLib
 
         public List<T> Deserialize(string filename)
         {
-            List<T> items = null;
+            
            
             string jsonData = File.ReadAllText(filename);
-            items = JsonConvert.DeserializeObject<List<T>>(jsonData);
+            List<T> items = JsonConvert.DeserializeObject<List<T>>(jsonData);
        
             return items;
         }
