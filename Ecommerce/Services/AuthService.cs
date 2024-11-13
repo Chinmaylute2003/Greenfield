@@ -21,6 +21,7 @@ namespace EcommerceServices
         {
             svc = new JSONRepository<User>();
             credSvc = new JSONRepository<Credential>();
+          
         }
         public bool Seeding()
         {
@@ -65,6 +66,7 @@ namespace EcommerceServices
 
         public bool Login(string email, string password)
         {
+        
             List<Credential> creds = credSvc.Deserialize(credFilePath);
             foreach(Credential c in creds)
             {
@@ -80,6 +82,7 @@ namespace EcommerceServices
 
         public bool Register(User user)
         {
+         
             List<User> allUsers = svc.Deserialize(userFilePath);
             allUsers.Add(user);
             List<Credential> creds = credSvc.Deserialize(credFilePath);
