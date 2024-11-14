@@ -85,7 +85,6 @@ namespace BankingPortal.Services
 			List<Credential> creds = credSvc.Deserialize(credFilePath);
 			creds.Add(new Credential { Email = user.Email, Password = user.Password});
 			credSvc.Serialize(credFilePath, creds);
-
 			return true;
 
 		}

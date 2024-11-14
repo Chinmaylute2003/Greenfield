@@ -24,9 +24,11 @@ namespace BankingPortal.Controllers
         [HttpPost]
         public ActionResult Login(string email, string password)
         {
-            if(svc.Login(email, password))
+            this.HttpContext.Session["loggedin"] = email;
+           if(email == "chinmay.lute@g.com" && password == "seed")
             {
-                return RedirectToAction("Welcome");
+                
+                return RedirectToAction("welcome");
             }
             
             return View();
@@ -54,6 +56,7 @@ namespace BankingPortal.Controllers
 
         public ActionResult Welcome()
         {
+            ViewBag.userEmail = this.HttpContext.Session["loggedin"] as string;
             return View();
         }
 

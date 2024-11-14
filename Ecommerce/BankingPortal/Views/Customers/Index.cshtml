@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@using BankingPortal.Models;
+
+<div class="d-flex flex-column gap-1 border border-dark">
+    @{ 
+        List<Customer> list = (List < Customer >) ViewData["custList"];
+        
+        foreach(Customer c in list)
+            {
+                <div>
+                <p>@c.Name @c.Location <a href="/Customers/Detail/@c.Id">Details</a> </p>
+                </div>
+            }
+    }
+</div>
+
