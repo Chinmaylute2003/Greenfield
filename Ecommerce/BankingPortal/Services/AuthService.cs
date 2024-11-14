@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using BankingPortal.Repositories;
 using BankingPortal.Models;
+using System.Runtime.InteropServices;
 namespace BankingPortal.Services
 {
 	public class AuthService: IAuthService
@@ -17,7 +18,7 @@ namespace BankingPortal.Services
 		{
 			svc = new JSONRepository<User>();
 			credSvc = new JSONRepository<Credential>();
-			Seeding();
+			//Seeding() must be run once if file is not created first time
 		}
 		public bool Seeding()
 		{
@@ -92,15 +93,31 @@ namespace BankingPortal.Services
 		public bool ResetPassword(string Email, string oldPassword, string newPassword)
 		{
 			List<Credential> creds = credSvc.Deserialize(credFilePath);
+			List<User> users = svc.Deserialize(userFilePath);
+			bool status = false;
+			
+			//updation in credential
 			foreach(Credential cred in creds)
 			{
 				if(cred.Email == Email && cred.Password == oldPassword)
 				{
 					cred.Password = newPassword;
-					return true;
+					status = true;
 				}
 			}
-			return false;
+
+			//updation in users password
+			foreach(User user in users)
+			{
+				if(user.Email == Email && user.Password == oldPassword)
+				{
+					user.Password = newPassword;
+                    status = true;
+                }
+			}
+			svc.Serialize(userFilePath, users);
+			credSvc.Serialize(credFilePath, creds);
+			return status;
 		}
 	}
 }

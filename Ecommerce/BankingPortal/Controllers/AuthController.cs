@@ -24,11 +24,11 @@ namespace BankingPortal.Controllers
         [HttpPost]
         public ActionResult Login(string email, string password)
         {
-            this.HttpContext.Session["loggedin"] = email;
-           if(email == "chinmay.lute@g.com" && password == "seed")
+
+            if(svc.Login(email, password))
             {
-                
-                return RedirectToAction("welcome");
+                this.HttpContext.Session["loggedin"] = email;
+                return RedirectToAction("Welcome");
             }
             
             return View();
@@ -49,6 +49,23 @@ namespace BankingPortal.Controllers
             User newUser = new User { FirstName = firstName, LastName = lastName, Email = email, Password = password, Contact = contactNumber};
             if (svc.Register(newUser))
             {
+                TempData["responseMessage"] = "User registered successfully!";
+                return RedirectToAction("Success");
+            }
+            return View();
+        }
+
+        public ActionResult ResetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ResetPassword(string email, string oldPassword, string newPassword)
+        {
+            if(svc.ResetPassword(email, oldPassword, newPassword))
+            {
+                TempData["responseMessage"] = "Password changed successfully!";
                 return RedirectToAction("Success");
             }
             return View();
@@ -62,6 +79,7 @@ namespace BankingPortal.Controllers
 
         public ActionResult Success()
         {
+            ViewBag.responseMessage = TempData["responseMessage"] as string;
             return View();
         }
 

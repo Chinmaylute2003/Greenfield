@@ -199,6 +199,7 @@
     <Content Include="Views\Customers\Detail.cshtml" />
     <Content Include="Views\Accounts\Index.cshtml" />
     <Content Include="Views\Accounts\Process.cshtml" />
+    <Content Include="Views\Auth\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
