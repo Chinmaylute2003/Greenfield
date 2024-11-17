@@ -16,7 +16,7 @@ namespace HRPortal.Services
         public EmployeeService()
         {
             svc = new JSONRepository<Employee>();
-            //Seeding();
+            //Seeding();    
         }
 
         public bool Seeding()
@@ -40,8 +40,7 @@ namespace HRPortal.Services
         public bool Delete(Employee emp)
         {
             List<Employee> empList = svc.Deserialize(filePath);
-            if(!empList.Remove(emp))
-                return false;
+            empList = empList.FindAll(x => x.Id != emp.Id); 
             svc.Serialize(filePath, empList);
             return true;
         }

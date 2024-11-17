@@ -12,10 +12,11 @@ namespace HRPortal.Controllers
     {
         // GET: Employees
         private EmployeeService empSvc = null;
+        private static int empCount = 1;
         public EmployeesController()
         {
             empSvc = new EmployeeService();
-            
+
         }
         public ActionResult Index()
         {
@@ -23,36 +24,24 @@ namespace HRPortal.Controllers
             return View();
         }
 
-        public ActionResult Create()
+
+        public ActionResult Insert()
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            string firstName = collection["firstName"] as string;
-            string lastName = collection["lastName"] as string;
-            string email = collection["email"] as string;
-            string contact = collection["contactNumber"] as string;
 
-            return View();
-        }
-
-        public  ActionResult Insert() 
-        {
-            return View(); 
-        }
-        
         [HttpPost]
         public ActionResult Insert(Employee e)
         {
+            e.Id = empCount++;
             empSvc.Create(e);
-            return View();
+            TempData["username"] = e.Name;
+            return RedirectToAction("Success");
         }
 
         public ActionResult Edit(int id)
-        {  
-            Employee emp =empSvc.Read(id);
+        {
+            Employee emp = empSvc.Read(id);
             return View(emp);
         }
 
@@ -63,13 +52,26 @@ namespace HRPortal.Controllers
 
             return RedirectToAction("Index", "Employees");
         }
-        
+
+
+        public ActionResult Details(int id)
+        {
+            Employee e = empSvc.Read(id);
+            return View(e);
+        }
         public ActionResult Delete(int id)
         {
-            Employee emp = empSvc.Read(id);
+            List<Employee> empList = empSvc.ReadAll();
+            Employee emp = empList.Find(x => x.Id == id);
             empSvc.Delete(emp);
-            return RedirectToAction("Index", "Employees")
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult Success()
+        {
+            ViewBag.username = TempData["username"] as string;
+            return View();
         }
     }
-
 }

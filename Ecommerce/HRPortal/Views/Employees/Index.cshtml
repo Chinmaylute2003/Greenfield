@@ -1,31 +1,34 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Index";        
 }
 @using HRPortal.Models;
 
 <h2>List of Employee</h2>
-<div class="d-flex flex-column gap-1 p-2">
+<div class="container p-4" >
     @{
 
         List<Employee> employees = (List<Employee>)ViewData["employeeList"];
 
 
+        
+            foreach (Employee e in employees)
+            {
+            <div class="row mt-3">
+                <div class="col-md-6">      
+                    <h2 class="title">@e.Name</h2>
+                </div>
+                    
+                <div class="col-md-6 d-flex gap-3">
+                    <a class="w-25 btn btn-warning" href="/Employees/Edit/@e.Id">Edit</a>
+                    <a class="w-25 btn btn-primary" href="/Employees/Details/@e.Id">Details</a>
+                    <a class="w-25 btn btn-danger" href="/Employees/Delete/@e.Id">Delete</a>
+                </div>
 
-        foreach (Employee e in employees)
-        {
-            <div class="row">
-                <h2 class="title">@e.Name</h2>
-          
-                 <p>@e.Id @e.Name </p>
-          
-                <a href="/Employees/Edit/@e.Id">Edit</a>
-                <a href="/Employees/Details/@e.Id">Details</a>
-                <a href="/Employees/Delete/@e.Id">Delete</a>
-           
+
             </div>
-        }
-
+            }
+       
     }
 </div>
 
