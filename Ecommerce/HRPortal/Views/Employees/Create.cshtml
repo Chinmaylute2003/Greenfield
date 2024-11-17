@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<form method="post" action="/Employees/Create" class="d-flex flex-column gap-1 w-25  py-2">
+    <label>Firstname</label>
+    <input name="firstName" type="text" />
+    <label>LastName</label>
+    <input name="lastName" type="text" />
+    <label>Contact</label>
+    <input name="contactNumber" type="text" />
+    <label>Email</label>
+    <input name="email" type="email" />
+    <button style="width:100px" class="mt-1 bg-success text-white rounded-pill p-1 border border-0" type="submit">Create</button>
+</form>
+

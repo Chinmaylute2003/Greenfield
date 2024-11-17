@@ -18,7 +18,8 @@ namespace BankingPortal.Services
 		{
 			svc = new JSONRepository<User>();
 			credSvc = new JSONRepository<Credential>();
-			//Seeding() must be run once if file is not created first time
+			//Seeding();
+			////must be run once if file is not created first time
 		}
 		public bool Seeding()
 		{
