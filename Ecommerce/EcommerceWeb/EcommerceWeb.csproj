@@ -193,13 +193,17 @@
     <Content Include="Views\Product\Insert.cshtml" />
     <Content Include="Views\Product\Update.cshtml" />
     <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\ShoppingCart\AddToCart.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Customer\PersonalInformationView.cshtml" />
+    <Content Include="Views\Customer\OrderHistoryInformationView.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Orders\" />
     <Folder Include="Views\Payments\" />
-    <Folder Include="Views\ShoppingCart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -237,9 +241,25 @@
       <Project>{3315565e-9b1a-4717-be5d-d44ced87a1be}</Project>
       <Name>CRM</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OrderProcessing\OrderProcessing.csproj">
+      <Project>{ac2ca061-1389-4fa8-ab12-853d5751849f}</Project>
+      <Name>OrderProcessing</Name>
+    </ProjectReference>
     <ProjectReference Include="..\POCOLib\EcommerceEntities.csproj">
       <Project>{15456dfb-e035-405c-946b-567189b27821}</Project>
       <Name>EcommerceEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\EcommerceServices.csproj">
+      <Project>{ef798a8d-e891-4362-b00d-a043fd2d182d}</Project>
+      <Name>EcommerceServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShoppingCart\ShoppingCart.csproj">
+      <Project>{6c23b692-0fe0-46e3-a65a-cd168a15a6a5}</Project>
+      <Name>ShoppingCart</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Specification\Specification.csproj">
+      <Project>{fb8a65e2-4281-4ef5-931c-128095a7d586}</Project>
+      <Name>Specification</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

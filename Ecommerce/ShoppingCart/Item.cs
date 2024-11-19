@@ -11,7 +11,7 @@ namespace ShoppingCart
 {
     public class Item
     {
-       public Product itemProduct { get; set; }
+       public int ProductId { get; set; }
        public int Quantity {  get; set; }
 
     }

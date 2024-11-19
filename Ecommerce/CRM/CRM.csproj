@@ -41,10 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerProfile.cs" />
     <Compile Include="CustomerService.cs" />
     <Compile Include="iCustomerService.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OrderProcessing\OrderProcessing.csproj">
+      <Project>{ac2ca061-1389-4fa8-ab12-853d5751849f}</Project>
+      <Name>OrderProcessing</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

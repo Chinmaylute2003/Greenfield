@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@using ShoppingCart;
+<h2>Index</h2>
+
+@{ 
+    Cart cart = ViewData["cart"] as Cart;
+
+    foreach(Item item in cart.ItemList)
+       {
+                <p>@item.ProductId</p>
+                <p>@item.Quantity</p>
+                <a href="/ShoppingCart/Delete/@item.ProductId">Remove</a>
+        }
+}

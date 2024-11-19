@@ -9,6 +9,6 @@ namespace ShoppingCart
     public class Cart
     {
        public List<Item> ItemList { get; set; }
-
+       public Cart() { ItemList = new List<Item>(); }
     }
 }

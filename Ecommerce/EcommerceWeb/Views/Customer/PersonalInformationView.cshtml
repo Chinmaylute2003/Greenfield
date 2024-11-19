@@ -1,0 +1,22 @@
+﻿@using CRM;
+<h2>Customer Details</h2>
+@{ 
+    Customer customer = Model;
+}
+
+
+
+<table class="table">
+    <tr>
+        <th>Customer Id</th>
+        <td>@customer.Id</td>
+    </tr>
+    <tr>
+        <th>FirstName</th>
+        <td>@customer.FirstName</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@customer.EmailAddress</td>
+    </tr>
+</table>

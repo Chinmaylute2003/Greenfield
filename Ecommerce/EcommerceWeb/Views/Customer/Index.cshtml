@@ -2,19 +2,10 @@
 @{
     ViewBag.Title = "Index";
 }
+@{
+    CustomerProfile theCustomer = ViewData["customerData"] as CustomerProfile;
+}
 
-
-<div class="d-flex align-content-center flex-column bg-dark text-white" >
-    @{ 
-        foreach(Customer c in @Model)
-        {
-            <div>
-            <p>@c.FirstName</p>
-            <p>@c.LastName</p>
-            <p>@c.EmailAddress</p>
-             <p>@c.Contact</p>
-            </div>
-        }
-    }
-</div>
+@Html.Partial("PersonalInformationView", theCustomer.Customer)
+@Html.Partial("OrderHistoryInformationView", theCustomer.OrderHistory)
 

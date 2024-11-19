@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+<hr />
+<div class="container">
+    <label>Email</label>
+    <input type="email" id="txtEmail" />
+    <label>Password</label>
+    <input type="password" id="txtPassword" />
+    <button id="signInBtn" class="btn btn-success" onclick="signIn()" >Sign in</button>
+</div>
+
+<script>
+
+    const signIn = () => {
+      
+        const email = document.getElementById("txtEmail").value;
+        const password = document.getElementById("txtPassword").value;
+
+        let cred = {
+            email: email,
+            password: password
+        }
+        
+        const req = new Request("/home/login", {
+            method: "POST",
+            body: JSON.stringify(cred)
+        })
+
+        fetch(req).then(res => res.json()).then((data) => {
+            console.log(data);
+            if (data.status === "OK")
+                alert("Valid User");
+            else
+                alert("Invalid user");
+        }).catch((err)=>console.log(err));
+       
+    }
+  
+    
+        
+    
+    
+   
+</script>

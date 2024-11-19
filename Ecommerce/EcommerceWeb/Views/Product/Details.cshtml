@@ -2,6 +2,18 @@
 @{
     ViewBag.Title = "Details";
 }
+@using EcommerceEntities 
 
 <h2>Details</h2>
 
+@{ 
+    Product product = ViewBag.productInfo;
+
+    <p>Id: @product.Id</p>
+    <p>Title: @product.Title</p>
+    <p>Description: @product.Description</p>
+    <p>Price; @product.UnitPrice</p>
+    <a href="/ShoppingCart/AddToCart/@product.Id">Add to Cart</a>
+}
+
+<p></p>

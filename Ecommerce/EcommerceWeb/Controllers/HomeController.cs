@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Catalog;
+using EcommerceServices;
 
 namespace EcommerceWeb.Controllers
 {
@@ -12,6 +13,26 @@ namespace EcommerceWeb.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(string email, string password)
+        {
+            AuthService authService = new AuthService();
+            if(authService.Login(email, password))
+            {
+
+                var res = new
+                {
+                    status = "Ok"
+                };
+                return Json(res);
+            }
+            return Json(new { status = "Failed" });
         }
 
         public ActionResult About()

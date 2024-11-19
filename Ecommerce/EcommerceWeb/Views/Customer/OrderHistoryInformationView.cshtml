@@ -1,0 +1,22 @@
+﻿
+@using OrderProcessing;
+<h2>Order History</h2>
+<table class="table">
+    <tr>
+        <th>OrderId</th>
+        <th>OrderAmount</th>
+        <th>OrderDate</th>
+        <th>OrderStatus</th>
+    </tr>
+    @{ 
+        foreach(Order o in @Model)
+        {
+        <tr>
+            <td>@o.Id</td>
+            <td>@o.OrderAmount</td>
+            <td>@o.OrderDate</td>
+            <td>@o.OrderStatus</td>
+        </tr>
+         }
+    }
+</table>

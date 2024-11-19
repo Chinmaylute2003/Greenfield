@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "AddToCart";
+}
+
+<h2>AddToCart</h2>
+<form method="POST" action="/ShoppingCart/AddToCart">
+    <input type="number" name="id" value=@ViewBag.itemId readonly/>
+    <input type="number" name="quantity" value=@ViewBag.quantity/>
+    <button type="submit">Add to Cart</button>
+</form>
+
