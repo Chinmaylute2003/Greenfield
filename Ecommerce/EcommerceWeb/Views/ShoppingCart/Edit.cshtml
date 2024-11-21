@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Item</h2>
+<form method="post" action="/ShoppingCart/Edit">
+    <h2>How many quantity of @ViewBag.productTitle with product Id @ViewBag.id you want ?</h2>
+    <input type="number" name="quantity" />
+    <input class="d-none" type="number" name="productId" value=@ViewBag.id />
+    <br />
+    <button class="btn btn-success mt-2" width="100">Change</button>
+</form>

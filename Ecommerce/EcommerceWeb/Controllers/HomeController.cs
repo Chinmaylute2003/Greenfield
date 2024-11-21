@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.XPath;
 using Catalog;
 using EcommerceServices;
 
@@ -20,19 +21,18 @@ namespace EcommerceWeb.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(string email, string password)
+        public ActionResult Signin(string email, string password)
         {
+            string res = "Failed";
             AuthService authService = new AuthService();
             if(authService.Login(email, password))
             {
 
-                var res = new
-                {
-                    status = "Ok"
-                };
-                return Json(res);
+                 res = "OK";
+                
             }
-            return Json(new { status = "Failed" });
+            
+            return Json(res);
         }
 
         public ActionResult About()

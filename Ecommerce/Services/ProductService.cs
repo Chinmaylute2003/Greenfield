@@ -47,7 +47,7 @@ namespace EcommerceServices
         public ProductService()
         {
             productList = new List<Product>();
-            Seeding();
+            //Seeding();
         }
         public bool Delete(Product product)
         {

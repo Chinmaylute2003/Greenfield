@@ -3,15 +3,49 @@
     ViewBag.Title = "Index";
 }
 @using ShoppingCart;
-<h2>Index</h2>
+<h2>Cart items  </h2>
 
-@{ 
-    Cart cart = ViewData["cart"] as Cart;
 
-    foreach(Item item in cart.ItemList)
-       {
-                <p>@item.ProductId</p>
-                <p>@item.Quantity</p>
-                <a href="/ShoppingCart/Delete/@item.ProductId">Remove</a>
+
+<table class="table">
+
+    <tr>
+        <th>
+            Product Id
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+    @{
+        Cart cart = ViewData["cart"] as Cart;
+        
+        foreach (Item item in cart.ItemList)
+        {
+
+            <tr>
+                <td>
+                    @item.ProductId
+                </td>
+                <td>
+                    @item.Quantity
+                </td>
+                <td>
+                    <a class="btn btn-danger" href="/ShoppingCart/Delete/@item.ProductId">Remove</a>
+                    <a class="btn btn-danger" href="/ShoppingCart/Edit/@item.ProductId">Edit</a>
+                </td>
+            </tr>
+
         }
-}
+        }
+       
+        </table>
+
+    <h2 class="fw-semibold">Total: @ViewBag.total</h2>
+
+
+
+

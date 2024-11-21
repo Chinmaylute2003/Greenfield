@@ -2,18 +2,34 @@
 @{
     ViewBag.Title = "Details";
 }
-@using EcommerceEntities 
+@using EcommerceEntities
 
 <h2>Details</h2>
 
-@{ 
-    Product product = ViewBag.productInfo;
+@{
+    Product p = ViewBag.productInfo;
 
-    <p>Id: @product.Id</p>
-    <p>Title: @product.Title</p>
-    <p>Description: @product.Description</p>
-    <p>Price; @product.UnitPrice</p>
-    <a href="/ShoppingCart/AddToCart/@product.Id">Add to Cart</a>
+
+    <table class="table table-borderless ">
+        <tr>
+
+            <td class="h1" colspan="2">@p.Title</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td class="text-center">@p.Description</td>
+        </tr>
+        <tr>
+            <th>Unit Price</th>
+            <td class="text-center">@p.UnitPrice</td>
+        </tr>      
+        <tr>
+           
+            <td class="text-center" colspan="2"> <a class="btn btn-success" href="/ShoppingCart/AddToCart/@p.Id">Add to Cart</a></td>
+            
+        </tr>
+            
+    </table>
 }
 
 <p></p>

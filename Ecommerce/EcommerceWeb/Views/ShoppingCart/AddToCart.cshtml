@@ -3,10 +3,24 @@
     ViewBag.Title = "AddToCart";
 }
 
-<h2>AddToCart</h2>
-<form method="POST" action="/ShoppingCart/AddToCart">
-    <input type="number" name="id" value=@ViewBag.itemId readonly/>
-    <input type="number" name="quantity" value=@ViewBag.quantity/>
-    <button type="submit">Add to Cart</button>
-</form>
+<h2>Add To Cart</h2>
+<hr />
 
+    <form class="w-25" method="POST" action="/ShoppingCart/AddToCart">
+        <table class="table ">
+            <tr>
+                <td>Product Id</td>
+                <td> <input type="number" name="id" value=@ViewBag.itemId readonly /></td>
+            </tr>
+            <tr>
+                <td>Quantity</td>
+                <td><input type="number" name="quantity" value=@ViewBag.quantity /></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-center"><button type="submit" class="btn btn-primary">Add to Cart</button></td>
+            </tr>
+        </table>
+
+    </form>
+
+    

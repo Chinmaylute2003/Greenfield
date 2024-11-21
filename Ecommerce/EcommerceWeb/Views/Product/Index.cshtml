@@ -5,14 +5,26 @@
 @using EcommerceEntities;
 <div class="d-flex flex-column p-3">
 
+
+
     @{
         foreach (Product p in @Model)
         {
-            <p class="text-danger p-3">@p.Id</p>
-            <p class="text-danger p-3">@p.Title</p>
-            <p class="text-danger p-3">@p.UnitPrice</p>
-            <a href="/Product/Details/@p.Id">Go to details</a>
-    
+            <table class="table"> 
+                <tr>
+                    
+                    <td class="h1">@p.Title</td>
+                </tr>
+                <tr>
+                    <th>Unit Price</th>
+                    <td class="text-center">@p.UnitPrice</td>
+                </tr>
+                <tr>
+                    <th>Detail</th>
+                    <td class="text-center"> <a class="btn btn-success   " href="/Product/Details/@p.Id">Details</a></td>
+                </tr>
+
+            </table>
         }
     }
 </div>

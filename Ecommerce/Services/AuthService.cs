@@ -70,7 +70,7 @@ namespace EcommerceServices
             List<Credential> creds = credSvc.Deserialize(credFilePath);
             foreach(Credential c in creds)
             {
-                if(email == c.Email)
+                if(email == c.Email && password == c.Password)
                 {
                     return true;
                 }
