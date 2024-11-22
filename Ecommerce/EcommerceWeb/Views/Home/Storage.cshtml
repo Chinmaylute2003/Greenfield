@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Storage";
+}
+
+<h2>Storage</h2>
+<div class="d-flex flex-column gap-2" style="width:500px">
+
+    <div class="row">
+        <p class="col-md-6">FirstName</p><input id="txtFirstName" name="txtFirstName" type="text" class="col-md-6" />
+    </div>
+    <div class="row">
+        <p class="col-md-6">LastName</p><input id="txtLastName" name="txtLastName" type="text" class="col-md-6" />
+    </div>
+    <div class="row">
+        <p class="col-md-6">Email</p><input id="txtEmail" name="txtEmail" type="text" class="col-md-6" />
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <p>Action</p>
+        </div>
+        <div class="col-md-6">
+            <div class="row justify-content-between">
+                <button class="col-md-6 btn btn-primary" style="width:45%; font-size: 12px;" id="setDataBtn" onclick="setData()">Set Session Storage</button>
+                <button class="col-md-6 btn btn-primary"  style="width:45%; font-size: 12px;"  id="getDataBtn" onclick="getData()">Get Session Storage</button>
+            </div>
+        </div>
+    </div>
+    <label id="labelResult"></label>
+
+</div>
+
+
+<script src="~/Scripts/storage.js"></script>
+
+  

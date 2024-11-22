@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using JSONDataRepositoryLib;
 namespace OrderProcessing
 {
-    internal class OrderService
+    public class OrderService
     {
         List<Order> orderList;
+        private string filePath = @"E:/orders.json";
+        private JSONRepository<Order> svc = null; 
         public OrderService() {
             orderList = new List<Order>();
+            svc = new JSONRepository<Order>();
         }
         public List<Order> GetAll()
         {
@@ -29,7 +32,10 @@ namespace OrderProcessing
         }
         public bool Insert(Order order)
         {
-            orderList.Add(order);
+            List<Order> orders = svc.Deserialize(filePath);
+            orders.Add(order);
+            svc.Serialize(filePath, orders);
+      
             return true;
         }
         public bool Delete(Order order)

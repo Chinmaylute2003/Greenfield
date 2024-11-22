@@ -48,5 +48,9 @@ namespace EcommerceWeb.Controllers
 
             return View();
         }
+        public ActionResult Storage()
+        {
+            return View();
+        }
     }
 }

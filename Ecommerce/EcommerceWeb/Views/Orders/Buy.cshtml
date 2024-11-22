@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Buy";
+}
+@using EcommerceEntities;
+
+@{ 
+    Product p = ViewBag.product;
+    int quant = ViewBag.quantity;
+    double totalPrice = quant * p.UnitPrice;
+}
+<h2>Order Summary</h2>
+<hr />
+<table class="table table-bordered">
+    <tr>
+        <td>Id</td>
+        <td>@p.Id</td>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td>@p.Title</td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td>@p.Description</td>
+    </tr>
+    <tr>
+        <td>Total Price</td>
+        <td>@totalPrice</td>
+    </tr>
+    <tr>
+        <td><a href="/"></a></td>
+        <td>@totalPrice</td>
+    </tr>
+</table>
+

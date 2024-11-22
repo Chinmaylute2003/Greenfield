@@ -5,6 +5,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EcommerceServices;
+using System.Xml.Schema;
+using EcommerceEntities;
+using System.Collections;
+using System.Web.UI;
 namespace EcommerceWeb.Controllers
 {
     public class ShoppingCartController : Controller
@@ -20,7 +24,15 @@ namespace EcommerceWeb.Controllers
                 total += svc.GetProduct(item.ProductId).UnitPrice * item.Quantity;
             }
             ViewBag.total = total;
-            ViewData["cart"] = cart;
+            List<Tuple<Product, int>> productList = new List<Tuple<Product, int>>();
+            foreach(Item item in cart.ItemList)
+            {
+                Product p = svc.GetProduct(item.ProductId);
+                Tuple<Product, int> t = new Tuple<Product, int>(p, item.Quantity);
+                productList.Add(t);
+            }
+            ViewData["cart"] = productList;
+            TempData["totalAmount"] = total;
             return View();
         }
 
@@ -88,5 +100,6 @@ namespace EcommerceWeb.Controllers
             return RedirectToAction("index");
         }
        
+        
     }   
 }

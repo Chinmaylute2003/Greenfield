@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AC2CA061-1389-4FA8-AB12-853D5751849F}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OrderProcessing</RootNamespace>
-    <AssemblyName>OrderProcessing</AssemblyName>
+    <ProjectGuid>{338DBC29-993A-40DE-84ED-7219BD25D2D6}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MultitaskingApp</RootNamespace>
+    <AssemblyName>MultitaskingApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,20 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="iOrderService.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="OrderService.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JSONDataRepositoryLib\JSONDataRepositoryLib.csproj">
-      <Project>{4ce898a8-a25c-4bc5-9cad-fb540e93120e}</Project>
-      <Name>JSONDataRepositoryLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ShoppingCart\ShoppingCart.csproj">
-      <Project>{6c23b692-0fe0-46e3-a65a-cd168a15a6a5}</Project>
-      <Name>ShoppingCart</Name>
-    </ProjectReference>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

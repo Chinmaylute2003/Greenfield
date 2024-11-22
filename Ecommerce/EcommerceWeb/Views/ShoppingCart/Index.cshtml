@@ -3,6 +3,7 @@
     ViewBag.Title = "Index";
 }
 @using ShoppingCart;
+@using EcommerceEntities;
 <h2>Cart items  </h2>
 
 
@@ -14,34 +15,60 @@
             Product Id
         </th>
         <th>
+            Title
+        </th>
+        <th>
+            Unit Price
+        </th>
+        <th>
             Quantity
+        </th>
+        <th>
+            Total Price
         </th>
         <th>
             Action
         </th>
     </tr>
     @{
-        Cart cart = ViewData["cart"] as Cart;
-        
-        foreach (Item item in cart.ItemList)
+        List<Tuple<Product, int>> cart = ViewData["cart"] as List<Tuple<EcommerceEntities.Product, int>>;
+
+        foreach (Tuple<Product, int> item in cart)
         {
 
-            <tr>
-                <td>
-                    @item.ProductId
-                </td>
-                <td>
-                    @item.Quantity
-                </td>
-                <td>
-                    <a class="btn btn-danger" href="/ShoppingCart/Delete/@item.ProductId">Remove</a>
-                    <a class="btn btn-danger" href="/ShoppingCart/Edit/@item.ProductId">Edit</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @item.Item1.Id
+            </td>
+            <td>
+                @item.Item1.Title
+            </td>
+            <td>
+                @item.Item1.UnitPrice
+            </td>
+
+
+            <td>
+                @item.Item2
+            </td>
+            <td>
+                @{
+                    int totalPrice = item.Item1.UnitPrice * item.Item2;
+                }
+                @totalPrice
+            </td>
+            <td>
+                <a class="btn btn-danger" href="/ShoppingCart/Delete/@item.Item1.Id">Remove</a>
+                <a class="btn btn-danger" href="/ShoppingCart/Edit/@item.Item1.Id">Edit</a>
+
+            </td>
+        </tr>
 
         }
         }
-       
+        <tr>
+            <td colspan="2"><a class="btn btn-warning" href="/Orders/ProceedToBuy">Proceed to Buy</a></td>
+        </tr>
         </table>
 
     <h2 class="fw-semibold">Total: @ViewBag.total</h2>

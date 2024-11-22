@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ShoppingCart;
 
 namespace OrderProcessing
 {
@@ -12,6 +13,8 @@ namespace OrderProcessing
         public DateTime OrderDate { get; set; }
         public string OrderStatus {  get; set; }
         public int OrderAmount {  get; set; }
+
+        public Cart OrderDetails { get; set; }
 
     }
 }

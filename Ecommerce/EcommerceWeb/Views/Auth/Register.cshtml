@@ -5,3 +5,71 @@
 
 <h2>Register</h2>
 
+
+<div class="row">
+    <div class="col-md-3 d-flex flex-column gap-1">
+    <div class="row">   
+            <div class="col d-flex justify-content-between"">
+                <label>First name</label>
+                <input type="text" id="firstName" name="firstName" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-between"">
+                <label>Last name</label>
+                <input type="text" id="lastName" name="lastName" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-between">
+                <label>Email</label>
+                <input type="email" id="userEmail" name="userEmail" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-between"">
+                <label>Password</label>
+                <input type="password" id="userPassword" name="userPassword" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary" id="registerBtn">Register</button>
+            </div>
+    </div>
+   
+</div>
+    </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        $("#registerBtn").click(() => {
+            const email = $("#userEmail").val();
+            const fName = $("#firstName").val();
+            const lName = $("#lastName").val();
+            const password = $("#userPassword").val();
+
+            let user = {
+                email: email,
+                firstName: fName,
+                lastName: lName,
+                password: password
+            }
+           
+          ;
+            let jsonArr = JSON.parse(localStorage.getItem("registeredUser"));
+            if (jsonArr == null) {
+
+                localStorage.setItem("registeredUser", JSON.stringify([user]));
+            } else {
+                
+
+                localStorage.setItem("registeredUser", JSON.stringify([...jsonArr, user]));
+            }
+
+           alert("user register successfully!")
+        })
+    })
+</script>
+ 
+

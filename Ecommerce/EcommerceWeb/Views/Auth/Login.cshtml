@@ -5,3 +5,58 @@
 
 <h2>Login</h2>
 
+<div class="row">
+    <div class="col-md-3 d-flex flex-column gap-1">
+        <div class="row">
+            <div class="col d-flex justify-content-between" >
+                <label>Email</label>
+                <input type="email" id="userEmail" name="userEmail" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col d-flex justify-content-between" >
+                <label>Password</label>
+                <input type="password" id="userPassword" name="userPassword" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary" id="loginBtn">Login</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+        $("#loginBtn").click(() => {
+            let email = $("#userEmail").val();
+            let password = $("#userPassword").val();
+            let res = false;
+            let tmpArr = JSON.parse(localStorage.getItem("registeredUser"));
+
+
+            console.log(tmpArr)
+            res = tmpArr.some((user) => 
+               (user.email == email && user.password == password)
+            )
+
+            console.log(email, password)
+            console.log(res)
+
+            if (res) {
+                alert("Valid User")
+            } else {
+                alert("Invalid User")
+            }
+        })
+
+       
+
+    })
+</script>
