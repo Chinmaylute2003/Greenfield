@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Paint";
+}
+
+<h2>Paint</h2>
+<canvas id="myCanvas" width="1300" height="500" style="border:1px solid #000000;">
+</canvas>
+<div class="row w-50">
+   
+        <button id="lineBtn" class="btn btn-success col-md-2 mx-1">Line</button>
+        <button id="rectBtn" class="btn btn-success col-md-2 mx-1">Rectangle</button>
+        <button id="clearCanvas" class="btn btn-primary col-md-2  mx-1">Clear</button>
+        <div class="col d-flex  align-items-center col-md-1"> <input id="colorBox" type="color" class="col" /></div>
+
+  
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+       
+        
+        let start = {}
+        let end = {} 
+        let currentShape = "line";
+
+        var cnvRef = $("#myCanvas")[0];
+        var ctx = cnvRef.getContext("2d");
+        ctx.strokeStyle = $("#colorBox").val();
+     
+
+        $("#lineBtn").click(() => {
+            currentShape = "line"
+        })
+
+        $("#rectBtn").click(() => {
+            currentShape = "rect"
+        })
+
+        $("#clearCanvas").click(() => {
+            ctx.clearRect(0, 0, cnvRef.width, cnvRef.height);
+        })
+        $("#myCanvas").mousedown((e) => {
+            let x = e.clientX
+            let y = e.clientY
+
+
+            //it gives the relative position of canvas w.r.t viewport
+            const rect = cnvRef.getBoundingClientRect();
+
+      
+            start = {
+                x : e.clientX - rect.left,
+                y : e.clientY - rect.top
+            }
+            
+          
+
+        })
+
+       
+
+        $("#myCanvas").mouseup((e) => {
+            let x = e.clientX
+            let y = e.clientY
+        
+
+
+            const rect = cnvRef.getBoundingClientRect();
+            end = {
+                x : e.clientX - rect.left,
+                y : e.clientY - rect.top
+            }
+
+            const width = end.x - start.x;
+            const height = end.y - start.y
+
+            ctx.beginPath(); 
+
+            if (currentShape == "rect") {
+                ctx.rect(start.x, start.y, width, height);
+                ctx.strokeStyle = $("#colorBox").val();
+                ctx.stroke();
+            } else if (currentShape == "line") {
+                ctx.moveTo(start.x, start.y);
+                ctx.lineTo(end.x, end.y);;
+                ctx.strokeStyle = $("#colorBox").val();
+                ctx.stroke();
+            }
+           
+            
+            
+          
+
+
+        })
+
+    })
+
+</script>

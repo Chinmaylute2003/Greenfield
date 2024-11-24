@@ -52,5 +52,10 @@ namespace EcommerceWeb.Controllers
         {
             return View();
         }
+
+        public ActionResult Paint()
+        {
+            return View();
+        }
     }
 }
