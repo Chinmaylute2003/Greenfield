@@ -57,5 +57,11 @@ namespace EcommerceWeb.Controllers
         {
             return View();
         }
+
+
+        public ActionResult Checkbox()
+        {
+            return View();
+        }
     }
 }
