@@ -1,0 +1,272 @@
+﻿
+@{
+    ViewBag.Title = "Catalog";
+}
+
+
+
+<div class="container">
+    <h2 class="mb-3">Catalog using Fetch Function</h2>
+    <table class="table table-bordered border border-1 border-dark shadow p-3 mb-3 bg-white rounded">
+        <thead class="bg-primary text-white">
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+
+            </tr>
+
+        </thead>
+        <tbody>
+        </tbody>
+        <tr>
+            <th><input type="number" id="txtId" placeholder="id" /></th>
+            <th><input type="text" id="txtTitle" placeholder="title" /></th>
+            <th><input type="text" id="txtDesc" placeholder="description" /></th>
+            <th><input type="number" id="txtUnitPrice" placeholder="unit price" /></th>
+            <th><input type="number" id="txtQuantity" placeholder="quantity" /></th>
+        </tr>
+
+
+    </table>
+    <button class="btn btn-success" id="addDataBtn">Add Data</button>
+    <button class="btn btn-success" id="updateDataBtn">Update Data</button>
+
+    <div class="row mt-3 container">
+        <div class="col-md-5">
+            <div class="row gap-3">
+                <input class="col-md-3" type="number" id="txtInputId" placeholder="Enter Id" />
+
+                <button class="btn btn-primary col-md-3 " id="getDataBtn">Get Data</button>
+                <button class="btn btn-danger col-md-3" id="deleteBtn">
+                    Delete Data
+                </button>
+            </div>
+            <div class="row shadow-sm p-3 mb-5 bg-white rounded" style="display:none;" id="dataTbl">
+
+            </div>
+        </div>
+        >
+    </div>
+
+
+    @*<table id="inputTable" class="table table-bordered">
+
+                <tr>
+                    <th><input type="number" id="txtId" /></th>
+                    <th><input type="text" id="txtTitle" /></th>
+                    <th><input type="text" id="txtDesc" /></th>
+                    <th><input type="number" id="txtUnitPrice" /></th>
+                    <th><input type="number" id="txtQuantity" /></th>
+                </tr>
+
+        </table>*@
+
+
+
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", async () => {
+
+        const url = "/api/products"
+        const addDataBtn = document.getElementById("addDataBtn");
+        const updateDataBtn = document.getElementById("updateDataBtn");
+        const deleteBtn = document.getElementById("deleteBtn");
+        const getDataBtn = document.getElementById("getDataBtn");
+      
+        await loadProducts();
+        //Handler
+        addDataBtn.addEventListener("click", async () => {
+
+            const product = getFieldValues();
+            console.log(product);
+            await createProduct(product);
+
+            clearFields();
+        });
+
+        deleteBtn.addEventListener("click", async () => {
+            const id = document.getElementById("txtInputId").value;
+            await deleteProduct(id);
+            document.getElementById("txtInputId").value = "";
+            
+        });
+
+        updateDataBtn.addEventListener('click', async () => {
+            const product = getFieldValues();
+            console.log(product);
+            await updateProduct(product.Id, product);
+            clearFields();
+        })
+
+        getDataBtn.addEventListener('click', async () => {
+
+            const id = document.getElementById("txtInputId").value;
+            const dataTbl = document.getElementById("dataTbl");
+            dataTbl.style.display = "block";
+            try {
+                const response = await fetch(url + "/" + id);
+                if (response.ok) {
+                    const data = await response.json();
+                    dataTbl.innerHTML = `
+                    <table>
+                    <tr>
+                    <th>Id</th>
+                    <td>${data.Id}</td>
+                    </tr>
+                    <tr>
+                    <th>Title</th>
+                    <td>${data.Title}</td>
+                    </tr>
+                    <tr>
+                    <th>Description</th>
+                    <td>${data.Description}</td>
+                    </tr>
+                    <tr>
+                    <th>Unit Price</th>
+                   <td>${data.UnitPrice}</td>
+                   </tr>
+                   <tr>
+                   <th>Quantity</th>
+                   <td>${data.Quantity}</td>
+                   </tr>
+                    </table>
+                   `
+                } else {
+                    alert("error in loading product");
+                }
+
+            } catch (err) {
+                console.error("err ", err);
+            }
+
+            document.getElementById("txtInputId").value = "";
+        })
+
+        //Services
+
+        function displayProducts(products) {
+
+            let tableCnt = "";
+            products.map((product) => {
+                tableCnt += `<tr><td>${product.Id}</td><td>${product.Title}</td>
+                <td>${product.Description}</td><td>${product.UnitPrice}</td><td>${product.Quantity}</td>
+                </tr>`
+            })
+            const tableBody = document.querySelector("tbody");
+            tableBody.innerHTML = tableCnt;
+
+        }
+        function getFieldValues() {
+            const pId = document.getElementById("txtId").value;
+            const pTitle = document.getElementById("txtTitle").value;
+            const pDesc = document.getElementById("txtDesc").value;
+            const pUnitPrice = document.getElementById("txtUnitPrice").value;
+            const pQuantity = document.getElementById("txtQuantity").value;
+
+            const product = {
+                Id: pId,
+                Title: pTitle,
+                Description: pDesc,
+                UnitPrice: pUnitPrice,
+                Quantity: pQuantity,
+                Image: "dummyImg"
+            }
+            return product;
+        }
+        function clearFields() {
+            //clearing field for new data
+            document.getElementById("txtId").value = "";
+            document.getElementById("txtTitle").value = "";
+            document.getElementById("txtDesc").value = "";
+            document.getElementById("txtUnitPrice").value = "";
+            document.getElementById("txtQuantity").value = "";
+        }
+
+        async function loadProducts() {
+            try {
+                const response = await fetch(url);
+
+                if (response.ok) {
+                    
+                    const data = await response.json();
+                    console.log(data); 
+                    data.sort(function(a, b){return a.Id - b.Id});
+                    displayProducts(data);
+                } else {
+                    alert("Error in loading products");
+                }
+
+            } catch (err){
+                console.error("error: ", err)
+            }
+        }
+
+        async function createProduct(product) {
+            
+            try {
+
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': "application/json"
+                    },
+                    body: JSON.stringify(product)
+                }); 
+                
+            
+                if (response.ok) {
+                    await loadProducts();
+                } else {
+                    alert("Error in creation of product");
+                }
+
+            } catch (err) {
+                console.error("error: ", err)
+            }
+        }
+
+        async function deleteProduct(id) {
+            try {
+                const response = await fetch(url + "/" + id, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+
+                if (response.ok) {
+                    await loadProducts();
+                } else {
+                    alert("Error in deletion of product");
+                }
+
+            } catch (err) {
+                console.error("error: ", err)
+            }
+        }
+
+        async function updateProduct(id, product) {
+            try {
+                console.log(id);
+                const response = await fetch(url + "/" + id, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(product)
+                });
+
+                response.ok ? await loadProducts() : alert("Error in updation of product");
+
+            } catch (err) {
+                console.error("error: ", err)
+            }
+        }
+
+    });
+</script>

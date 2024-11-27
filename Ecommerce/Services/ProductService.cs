@@ -54,7 +54,7 @@ namespace EcommerceServices
             bool status = false;
             List<Product> products = new List<Product>();
             products = GetAll();
-            products.Remove(product);
+            products.RemoveAll(x => x.Id == product.Id);
             IDataRepository<Product> svc = new JSONRepository<Product>();
             status  = svc.Serialize(filePath, products);
             return status;
@@ -105,7 +105,7 @@ namespace EcommerceServices
             List<Product> allProducts = new List<Product>();
             allProducts = GetAll();
             Product productToBeDeleted = GetProduct(productToBeUpdated.Id);
-            allProducts.Remove(productToBeDeleted);
+            allProducts.RemoveAll((x) => x.Id == productToBeUpdated.Id);
             allProducts.Add(productToBeUpdated);
             IDataRepository<Product> svc = new JSONRepository<Product>();
             svc.Serialize(filePath, allProducts);

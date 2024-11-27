@@ -14,5 +14,12 @@ namespace AuthWebApi.Controllers
 
             return View();
         }
+
+        public ActionResult Catalog()
+        {
+           
+
+            return View();
+        }
     }
 }
